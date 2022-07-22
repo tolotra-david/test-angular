@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable, Observer, Subscription } from 'rxjs';
 import { LoginService } from './../../services/login.service';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
 
 
-  constructor(private LoginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLogin = localStorage.getItem('login') ?? '';
@@ -38,11 +39,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         username: this.form.value.username,
         password: this.form.value.password
       };
-      this.LoginService.isAuthorized(data);
+      this.loginService.isAuthorized(data)
     }
-    this.errorSubscription = this.LoginService.invalidMessageSubject.subscribe((res: boolean) => {
-      this.isWrongPassword = res
+    this.loginService.invalidMessageSubject.subscribe((r)=>{
+      this.isWrongPassword = r
     })
+    this.loginService.emitSubject()
 
   }
 

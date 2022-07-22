@@ -6,14 +6,14 @@ import { Subject } from 'rxjs';
 })
 export class LoginService {
 
-  invalidMessageSubject: Subject<boolean> = new Subject<boolean>();
+  invalidMessageSubject = new Subject<boolean>();
 
   private login = {
     name: 'test',
     password: 'test'
   };
 
-  isAuth: boolean;
+  isAuth: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -22,9 +22,10 @@ export class LoginService {
     if (username === this.login.name && password === this.login.name) {
       this.isAuth = true;
       this.router.navigate(['/home']);
-    } else {
-      this.invalidMessageSubject.next(true);
     }
   }
 
+  emitSubject(){
+    this.invalidMessageSubject.next(true);
+  }
 }
