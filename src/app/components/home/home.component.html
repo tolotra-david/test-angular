@@ -1,1 +1,11 @@
-<p>home works!</p>
+<mat-drawer-container>
+    <mat-drawer mode="side" opened="">
+        <h3 id="menu">Menu</h3>
+        <ul id="lists" class="list-group">
+            <li class="list-group-item" *ngFor="let menu of menus" [routerLink]="menu.link" routerLinkActive="active"><a>{{menu.name}}</a></li>
+        </ul>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -20,21 +20,25 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        canActivate: [AuthGaurd]
+        canActivate: [AuthGaurd],
+        children: [
+            {
+                path: 'fake',
+                component: FakeComponent,
+            },
+            {
+                path: 'lists',
+                component: ListsComponent,
+            }, 
+            {
+                path: '',
+                component: ListsComponent
+            }
+        ]
     },
     {
         path: 'not-found',
         component: NotFoundComponent
-    },
-    {
-        path: 'fake',
-        component: FakeComponent,
-        canActivate: [AuthGaurd]
-    },
-    {
-        path: 'lists',
-        component: ListsComponent,
-        canActivate: [AuthGaurd]
     },
     {
         path: '**',

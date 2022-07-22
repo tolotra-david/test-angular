@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { AuthGaurd } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,8 +12,9 @@ import { ListsComponent } from './components/lists/lists.component';
 import { FakeComponent } from './components/fake/fake.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [
     AuthGaurd

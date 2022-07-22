@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  menus = [
+    {
+      link: 'lists',
+      name: 'Lists'
+    },
+    {
+      link: 'fake',
+      name: 'Fake'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
